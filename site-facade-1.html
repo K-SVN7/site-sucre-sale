@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sucré Salé – Cadeaux & Déco</title>
+
+  <!-- Google Fonts : Cormorant Garamond (titres) + Jost (corps) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       VARIABLES & RESET
+    ========================================================= */
+    :root {
+      --cream:    #f5ede0;
+      --beige:    #e8d8c4;
+      --sand:     #c9ab8a;
+      --caramel:  #a0714f;
+      --espresso: #5c3d2e;
+      --terracotta: #c96b3a;
+      --white:    #fdfaf6;
+      --text:     #3d2b1f;
+      --text-light: #7a5c47;
+
+      --radius:   14px;
+      --shadow:   0 4px 24px rgba(92,61,46,.10);
+      --shadow-lg:0 8px 40px rgba(92,61,46,.14);
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Jost', sans-serif;
+
+      --nav-h: 68px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* =========================================================
+       UTILITIES
+    ========================================================= */
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      color: var(--espresso);
+      letter-spacing: .03em;
+      line-height: 1.2;
+    }
+
+    .section-title span {
+      color: var(--terracotta);
+      font-style: italic;
+    }
+
+    .tag-line {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 34px;
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .28s ease;
+    }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: var(--white);
+      border: 2px solid var(--terracotta);
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--terracotta);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--espresso);
+      border: 2px solid var(--caramel);
+    }
+    .btn-outline:hover {
+      background: var(--caramel);
+      color: var(--white);
+    }
+
+    section { padding: 96px 0; }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(245,237,224,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--beige);
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* LOGO */
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .logo-name {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 400;
+      color: var(--espresso);
+      letter-spacing: .04em;
+    }
+    .logo-sub {
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-top: 2px;
+    }
+
+    /* NAV LINKS */
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: .8rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--text-light);
+      position: relative;
+      padding-bottom: 3px;
+      transition: color .2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--terracotta);
+      transition: width .3s ease;
+    }
+    .nav-links a:hover { color: var(--espresso); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--espresso);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--beige);
+      z-index: 99;
+      padding: 24px;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+    .mobile-menu a {
+      font-size: .9rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--espresso);
+      font-weight: 500;
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+    #accueil {
+      position: relative;
+      height: 100vh;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      /* ── REMPLACER : utilisez votre propre image ──────────────
+         Exemple : background-image: url('devanture.jpg');
+         ──────────────────────────────────────────────────────── */
+      background-image: url('site-facade-6.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(.55);
+      transform: scale(1.03);
+      animation: heroZoom 14s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.1); }
+      to   { transform: scale(1.0); }
+    }
+
+    /* Grain overlay for warmth */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(92,61,46,.45) 0%,
+        rgba(201,107,58,.18) 60%,
+        rgba(92,61,46,.55) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: var(--white);
+      max-width: 640px;
+      padding: 0 24px;
+      margin-left: max(24px, calc((100vw - 1160px)/2));
+      animation: fadeUp .9s ease both;
+      animation-delay: .3s;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content .tag-line { color: rgba(253,250,246,.7); }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 7vw, 4.8rem);
+      font-weight: 300;
+      line-height: 1.08;
+      margin-bottom: 20px;
+      letter-spacing: .02em;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: #f0c9a0;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(253,250,246,.85);
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(253,250,246,.6);
+      font-size: .7rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      z-index: 2;
+      animation: bounce 2.4s ease-in-out infinite;
+    }
+    .scroll-hint::after {
+      content: '';
+      width: 1px;
+      height: 42px;
+      background: rgba(253,250,246,.4);
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* =========================================================
+       À PROPOS
+    ========================================================= */
+    #a-propos { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .about-image-wrap img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Decorative card floating */
+    .about-badge {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      background: var(--terracotta);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 20px 24px;
+      box-shadow: var(--shadow);
+      font-family: var(--font-display);
+    }
+    .about-badge strong {
+      display: block;
+      font-size: 2.4rem;
+      font-weight: 300;
+      line-height: 1;
+    }
+    .about-badge span {
+      font-size: .75rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .85;
+    }
+
+    .about-text { padding-left: 8px; }
+    .about-text .section-title { margin-bottom: 24px; }
+
+    .about-text p {
+      color: var(--text-light);
+      font-weight: 300;
+      margin-bottom: 18px;
+      font-size: .97rem;
+    }
+
+    .about-features {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-item p {
+      margin: 0;
+      font-size: .9rem;
+      color: var(--espresso);
+      font-weight: 400;
+    }
+
+    /* =========================================================
+       PRODUITS
+    ========================================================= */
+    #produits { background: var(--cream); }
+
+    .products-header {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 64px;
+    }
+
+    .products-header p {
+      color: var(--text-light);
+      font-weight: 300;
+      margin-top: 14px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* Placeholder quand aucune image n'est disponible */
+    .img-placeholder {
+      width: 100%;
+      height: 200px;
+      background: var(--beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      color: var(--sand);
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .img-placeholder span { font-size: 2rem; }
+
+    .product-body {
+      padding: 20px 22px 24px;
+    }
+
+    .product-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--espresso);
+      margin-bottom: 8px;
+    }
+
+    .product-body p {
+      font-size: .875rem;
+      color: var(--text-light);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .product-tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: .7rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+    }
+
+    /* =========================================================
+       GALERIE
+    ========================================================= */
+    #galerie { background: var(--white); }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 260px);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Grande image en haut à gauche */
+    .gallery-item:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    .gallery-item .img-placeholder {
+      height: 100%;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(92,61,46,.45), transparent);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+    #contact { background: var(--cream); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-info .section-title { margin-bottom: 32px; }
+
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-text h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--espresso);
+      margin-bottom: 4px;
+    }
+
+    .contact-item-text p,
+    .contact-item-text a {
+      font-size: .88rem;
+      color: var(--text-light);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .contact-item-text a:hover { color: var(--terracotta); }
+
+    /* Map encadré */
+    .map-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      height: 100%;
+      min-height: 380px;
+      background: var(--beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--text-light);
+      font-size: .85rem;
+    }
+
+    /* ── REMPLACER : collez ici un iframe Google Maps ─────────
+       Exemple :
+       <iframe src="https://maps.google.com/maps?q=...&output=embed"
+         width="100%" height="100%" style="border:0" allowfullscreen loading="lazy">
+       </iframe>
+       ──────────────────────────────────────────────────────── */
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .map-placeholder-icon { font-size: 2.8rem; }
+    .map-placeholder-text {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--espresso);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      background: var(--espresso);
+      color: rgba(253,250,246,.65);
+      padding: 48px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: .05em;
+    }
+
+    .footer-sep {
+      width: 40px;
+      height: 1px;
+      background: var(--sand);
+      opacity: .5;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(253,250,246,.55);
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      font-size: .75rem;
+      letter-spacing: .08em;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+      .gallery-item:first-child { grid-row: auto; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      section { padding: 72px 0; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-image-wrap img { height: 320px; }
+      .about-badge { right: 0; bottom: -20px; }
+
+      .products-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .map-wrap { min-height: 260px; }
+
+      .footer-links { gap: 18px; }
+    }
+
+    @media (max-width: 480px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .gallery-grid  { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .hero-title    { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       NAVIGATION
+  ========================================================= -->
+  <nav>
+    <div class="nav-inner">
+
+      <!-- LOGO — modifier le nom et le sous-titre ici -->
+      <a href="#accueil" class="logo">
+        <span class="logo-name">Sucré Salé</span>
+        <span class="logo-sub">Cadeaux &amp; Déco</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#a-propos">À propos</a></li>
+        <li><a href="#produits">Produits</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Bouton hamburger pour mobile -->
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Menu mobile -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#accueil"  onclick="closeMenu()">Accueil</a></li>
+      <li><a href="#a-propos" onclick="closeMenu()">À propos</a></li>
+      <li><a href="#produits" onclick="closeMenu()">Produits</a></li>
+      <li><a href="#contact"  onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- =========================================================
+       HERO — SECTION ACCUEIL
+  ========================================================= -->
+  <section id="accueil">
+
+    <!-- Image de fond hero ─────────────────────────────────────
+         Remplacer l'image dans le CSS : #accueil .hero-bg { background-image: url('votre-image.jpg'); }
+         ────────────────────────────────────────────────────── -->
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+      <p class="tag-line">Boutique de quartier · Vannes</p>
+      <h1 class="hero-title">
+        Douceurs <em>sucrées</em><br>et plaisirs salés
+      </h1>
+      <!-- Modifier le texte de présentation ici -->
+      <p class="hero-desc">
+        Cadeaux, décoration et vaisselle soigneusement sélectionnés pour embellir votre quotidien et ravir vos proches.
+      </p>
+      <a href="#produits" class="btn btn-primary">Découvrir</a>
+    </div>
+
+    <div class="scroll-hint">Défiler</div>
+  </section>
+
+  <!-- =========================================================
+       À PROPOS
+  ========================================================= -->
+  <section id="a-propos">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Image à propos ─────────────────────────────────────
+             Remplacer src="..." par votre propre image
+             ────────────────────────────────────────────────── -->
+        <div class="about-image-wrap">
+          <img
+            src="site-facade-1.jpg"
+            alt="Intérieur chaleureux de la boutique Sucré Salé"
+          />
+          <!-- Badge flottant — modifier les chiffres ici -->
+          <div class="about-badge">
+            <strong>+10</strong>
+            <span>ans de bonheur</span>
+          </div>
+        </div>
+
+        <!-- Texte à propos — modifier ici -->
+        <div class="about-text">
+          <p class="tag-line">Notre histoire</p>
+          <h2 class="section-title">Une boutique pensée avec <span>cœur</span></h2>
+
+          <p>
+            Nichée au cœur de Vannes, Sucré Salé est bien plus qu'une boutique. C'est un espace chaleureux où chaque objet a été choisi avec soin pour apporter de la joie, de la couleur et du style à votre quotidien.
+          </p>
+          <p>
+            Bijoux dorés, bougies parfumées, déco tendance et vaisselle originale — nous dénichons pour vous des pièces uniques qui font la différence.
+          </p>
+
+          <div class="about-features">
+            <div class="feature-item">
+              <div class="feature-icon">✦</div>
+              <p>Sélection exclusive et produits de créateurs</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🎁</div>
+              <p>Emballage cadeau soigné inclus sur demande</p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">💛</div>
+              <p>Conseils personnalisés avec le sourire</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PRODUITS
+  ========================================================= -->
+  <section id="produits">
+    <div class="container">
+
+      <div class="products-header">
+        <p class="tag-line">Notre sélection</p>
+        <h2 class="section-title">Ce qui nous <span>inspire</span></h2>
+        <!-- Modifier le texte d'introduction ici -->
+        <p>Des objets qui racontent une histoire, des cadeaux qui marquent les esprits, des petits bonheurs pour tous les goûts.</p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- CARTE 1 — Bijoux ─────────────────────────────────
+             Remplacer src="..." par votre image produit
+             ──────────────────────────────────────────────── -->
+        <div class="product-card">
+          <img src="site-facade-3.jpg" alt="Bijoux dorés" />
+          <div class="product-body">
+            <h3>Bijoux &amp; Accessoires</h3>
+            <p>Bracelets dorés, colliers fins et bijoux de créateurs pour sublimer chaque tenue avec élégance.</p>
+            <span class="product-tag">→ Découvrir</span>
+          </div>
+        </div>
+
+        <!-- CARTE 2 — Bougies & Déco ─────────────────────────
+             Remplacer src="..." par votre image produit
+             ──────────────────────────────────────────────── -->
+        <div class="product-card">
+          <img src="site-facade-2.jpg" alt="Bougies et lampes déco" />
+          <div class="product-body">
+            <h3>Bougies &amp; Luminaires</h3>
+            <p>Lampes, bougies parfumées et luminaires pour créer une ambiance chaleureuse et cosy chez vous.</p>
+            <span class="product-tag">→ Découvrir</span>
+          </div>
+        </div>
+
+        <!-- CARTE 3 — Maroquinerie ───────────────────────────
+             Remplacer src="..." par votre image produit
+             ──────────────────────────────────────────────── -->
+        <div class="product-card">
+          <img src="site-facade-4.jpg" alt="Pochettes et accessoires" />
+          <div class="product-body">
+            <h3>Maroquinerie &amp; Textile</h3>
+            <p>Pochettes originales, plaids moelleux et accessoires textiles pour le plaisir de se faire plaisir.</p>
+            <span class="product-tag">→ Découvrir</span>
+          </div>
+        </div>
+
+        <!-- CARTE 4 — Cadeaux & Vaisselle ───────────────────
+             Remplacer src="..." par votre image produit
+             ──────────────────────────────────────────────── -->
+        <div class="product-card">
+          <img src="site-facade-5.jpg" alt="Cadeaux et décoration" />
+          <div class="product-body">
+            <h3>Cadeaux &amp; Vaisselle</h3>
+            <p>Des idées cadeaux pour tous les moments : vaisselle tendance, objets décoratifs et curiosités.</p>
+            <span class="product-tag">→ Découvrir</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       GALERIE
+  ========================================================= -->
+ 
+  <!-- =========================================================
+       CONTACT
+  ========================================================= -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Informations de contact — modifier ici -->
+        <div class="contact-info">
+          <p class="tag-line">Nous trouver</p>
+          <h2 class="section-title">Venez nous <span>rendre visite</span></h2>
+
+          <div class="contact-block">
+
+            <!-- Adresse — modifier ici -->
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div class="contact-item-text">
+                <h4>Adresse</h4>
+                <p>
+                  <!-- Remplacer par votre adresse -->
+                  12 Rue de la Boulangerie<br>
+                  56000 Vannes, Bretagne
+                </p>
+              </div>
+            </div>
+
+            <!-- Téléphone — modifier ici -->
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div class="contact-item-text">
+                <h4>Téléphone</h4>
+                <!-- Remplacer par votre numéro -->
+                <a href="tel:+33297000000">02 97 00 00 00</a>
+              </div>
+            </div>
+
+            <!-- Email — modifier ici -->
+            <div class="contact-item">
+              <div class="contact-icon">✉️</div>
+              <div class="contact-item-text">
+                <h4>Email</h4>
+                <!-- Remplacer par votre email -->
+                <a href="mailto:contact@sucresale-vannes.fr">contact@sucresale-vannes.fr</a>
+              </div>
+            </div>
+
+            <!-- Horaires — modifier ici -->
+            <div class="contact-item">
+              <div class="contact-icon">🕐</div>
+              <div class="contact-item-text">
+                <h4>Horaires d'ouverture</h4>
+                <p>
+                  Mardi – Samedi : 10h – 19h<br>
+                  Dimanche &amp; Lundi : Fermé
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Carte / Localisation ───────────────────────────────
+             Remplacer le contenu de .map-wrap par un iframe Google Maps :
+             <iframe src="https://maps.google.com/maps?q=Sucré+Salé+Vannes&output=embed"
+               width="100%" height="100%" style="border:0" allowfullscreen loading="lazy">
+             </iframe>
+             ────────────────────────────────────────────────── -->
+       <div class="map-wrap">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21005.23323220197!2d2.278673810863338!3d48.84573518864248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671c4889762df%3A0x9f30e7e81f172165!2sKameme%20Concept%20-%20Boutique%20de%20d%C3%A9coration%20et%20cadeaux!5e0!3m2!1sfr!2sfr!4v1773343247855!5m2!1sfr!2sfr" 
+    width="100%" height="100%" 
+    style="border:0;" 
+    allowfullscreen="" loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================= -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+
+        <!-- Modifier le nom et le slogan ici -->
+        <span class="footer-logo">Sucré Salé</span>
+        <div class="footer-sep"></div>
+
+        <ul class="footer-links">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#a-propos">À propos</a></li>
+          <li><a href="#produits">Produits</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Modifier l'année si nécessaire -->
+        <p class="footer-copy">© 2024 Sucré Salé · Cadeaux, Décoration, Vaisselle · Vannes</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       JAVASCRIPT — Menu mobile
+  ========================================================= -->
+  <script>
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+    }
+
+    // Fermer le menu en cliquant ailleurs
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
